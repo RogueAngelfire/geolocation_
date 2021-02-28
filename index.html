@@ -1,4 +1,7 @@
-<!-- Issues with Xcode not allowing access iPhone Xs and GitHub source materal not loading for the package.json Github appears to be down 27/02/21 15:49 GMT -->
+<!-- 28/02/21 Unfrotunately the I couldn't access local host with the IP Address
+ as added npm install then npm start tried first as instucted and neither browser (
+     goolge or safari would fuction as this works with Xcode and the simulator app on
+    mac -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +63,16 @@
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
   <script>
+      const arrow = document.querySelector('.arrow');
+    const speed = document.querySelector('.speed-value');
+
+    navigator.geolocation.watchPosition((data) => {
+      console.log(data);
+      speed.textContent = data.coords.speed;
+      arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+    }, (err) => {
+      console.error(err);
+    });
   </script>
 </body>
 </html>
